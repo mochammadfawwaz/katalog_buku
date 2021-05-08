@@ -49,12 +49,12 @@
             <div class="alert alert-danger" role="alert">Maaf data <?php echo $_GET['jenis'];?> wajib diisi</div>
           <?php }} ?>
       </div>
-      <form class="form-horizontal" method="post" action="index.php?include=penerbit">
+      <form class="form-horizontal" method="post" action="index.php?include=konfirmasi-edit-penerbit">
         <div class="card-body">
           <div class="form-group row">
             <label for="Penerbit" class="col-sm-3 col-form-label">Penerbit</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" id="Penerbit" value="<?php echo $penerbit; ?>">
+              <input type="text" class="form-control" id="Penerbit" name="penerbit" value="<?php echo $penerbit; ?>">
             </div>
           </div>
           <div class="form-group row">

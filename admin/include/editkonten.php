@@ -51,7 +51,7 @@
             <?php } ?>
           <?php } ?>
       </div>
-      <form class="form-horizontal" method="POST" action="konfirmasieditkonten.php">
+      <form class="form-horizontal" method="POST" action="index.php?include=konfirmasi-edit-konten">
         <div class="card-body">
           
           <div class="form-group row">

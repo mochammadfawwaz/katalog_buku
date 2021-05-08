@@ -23,7 +23,7 @@
           include("include/blog.php");
         }else if($include=="detail-blog") {
           include("include/detailblog.php");
-        }else if($include=="contact") {
+        }else if($include=="contact-us") {
           include("include/contactus.php");
         }else if($include=="konfirmasi-pesan") {
           include("include/konfirmasipesan.php");

@@ -37,12 +37,25 @@
           <?php } ?>
       <?php } ?>
       </div>
-      <form class="form-horizontal" method="post" action="index.php?include=konfirmas-edit-tagw">
+      <?php 
+          if(isset($_GET['data'])) {
+            $id_tag = $_GET['data'];
+            $_SESSION['id_tag'] = $id_tag;
+
+            // get data kategori buku
+            $sql_d = "SELECT `tag` FROM `tag` WHERE `id_tag` = '$id_tag'";
+            $query_d = mysqli_query($koneksi, $sql_d);
+            while($data_d = mysqli_fetch_row($query_d)) {
+              $id_tag = $data_d[0];
+            }
+          }
+        ?>
+      <form class="form-horizontal" method="post" action="index.php?include=konfirmasi-edit-tag">
         <div class="card-body">
           <div class="form-group row">
             <label for="Tag" class="col-sm-3 col-form-label">Tag</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" id="Tag" value="PHP">
+              <input type="text" class="form-control" id="Tag" name="tag" value="<?php echo $id_tag ?>">
             </div>
           </div>
         </div>

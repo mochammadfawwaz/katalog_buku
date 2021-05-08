@@ -25,13 +25,17 @@
       }else if($include == "konfirmasi-tambah-tag") {
         include("include/konfirmasitambahtag.php");
       }else if($include == "konfirmasi-edit-tag") {
-        include("include/konfirmasiedittag");
+        include("include/konfirmasiedittag.php");
       }else if($include == "konfirmasi-tambah-penerbit") {
         include("include/konfirmasitambahpenerbit.php");
       }else if($include == "konfirmasi-edit-penerbit") {
         include("include/konfirmasieditpenerbit.php");
       }else if($include == "konfirmasi-tambah-kategori-blog") {
         include("include/konfirmasitambahkategoriblog.php");
+      }else if($include == "konfirmasi-tambah-konten") {
+        include("include/konfirmasitambahkonten.php");
+      }else if($include == "konfirmasi-edit-konten") {
+        include("include/konfirmasieditkonten.php");
       }else if($include == "konfirmasi-edit-kategori-blog") {
         include("include/konfirmasieditkategoriblog.php");
       }else if($include == "konfirmasi-tambah-buku") {

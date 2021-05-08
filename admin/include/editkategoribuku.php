@@ -48,7 +48,7 @@
             }
           }
         ?>
-      <form class="form-horizontal" method="post" action="index.php?  konfirmasi-edit-kategori-buku">
+      <form class="form-horizontal" method="post" action="index.php?include=konfirmasi-edit-kategori-buku">
         <div class="card-body">
           <div class="form-group row">
             <label for="Kategori Buku" class="col-sm-3 col-form-label">Kategori Buku</label>

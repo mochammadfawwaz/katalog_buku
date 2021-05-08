@@ -1,6 +1,6 @@
 <?php
     $tag = $_POST['tag'];
-    if(empty($judul)) {
+    if(empty($tag)) {
         header("Location:index.php?include=tambah-tag&notif=tambahkosong");
     }else {
         $sql = "INSERT INTO `tag` (`tag`) VALUES ('$tag')";

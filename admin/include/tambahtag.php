@@ -32,12 +32,12 @@
       <?php if(!empty($_GET['notif'])) { ?>
           <?php if($_GET['notif'] =="tambahkosong") {?>
               <div class="alert alert-danger" role="alert">
-                Maaf data kategori buku wajib diisi
+                Maaf data tag wajib diisi
               </div>
           <?php } ?>
       <?php } ?>
       </div>
-      <form class="form-horizontal">
+      <form class="form-horizontal" method="post" action="index.php?include=konfirmasi-tambah-tag">
         <div class="card-body">
           <div class="form-group row">
             <label for="tag" class="col-sm-3 col-form-label">Tag</label>

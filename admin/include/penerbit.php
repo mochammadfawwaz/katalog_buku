@@ -79,9 +79,9 @@
               <?php
                     if((isset($_GET['aksi'])) && (isset($_GET['data']))) {
                       if($_GET['aksi'] == 'hapus') {
-                        $id_kategori_blog = $_GET['data'];
+                        $id_penerbit = $_GET['data'];
                         // hapus kategori buku
-                        $sql_dh = "DELETE FROM `kategori_blog` WHERE `id_kategori_blog` = '$id_kategori_blog'";
+                        $sql_dh = "DELETE FROM `penerbit` WHERE `id_penerbit` = '$id_penerbit'";
                         mysqli_query($koneksi, $sql_dh);
                       }
                     } 
@@ -127,7 +127,7 @@
                       <td><?php echo $alamat; ?></td>
                       <td align="center">
                         <a href="index.php?include=edit-penerbit&data=<?php echo $id_penerbit;?>" class="btn btn-xs btn-info"><i class="fas fa-edit"></i> </a>
-                        <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $penerbit; ?>'))window.location.href='index.php?include=edit-penerbit&aksi=hapus&data=<?php echo $id_penerbit; ?>&if=hapusberhasil'" class="btn btn-xs btn-warning"><i class="fas fa-trash" title="Hapus"></i></a>  
+                        <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $penerbit; ?>'))window.location.href='index.php?include=penerbit&aksi=hapus&data=<?php echo $id_penerbit; ?>&if=hapusberhasil'" class="btn btn-xs btn-warning"><i class="fas fa-trash" title="Hapus"></i></a>  
                       </td>
                     </tr>
                     <?php $no++; } ?>
