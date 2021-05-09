@@ -13,12 +13,16 @@
         $include = $_GET['include'];
         if($include=="detail-buku") {
           include("include/detailbuku.php");
-        }else if($include=="about") {
+        }else if($include=="about-us") {
           include("include/aboutus.php");
         }else if($include=="detail-kategori-buku") {
           include("include/detailkategoribuku.php");
+        }else if($include=="detail-kategori-blog") {
+          include("include/detailkategoriblog.php");
         }else if($include=="detail-tag") {
           include("include/detailtag.php");
+        }else if($include=="detail-archive") {
+          include("include/detailarchieve.php");
         }else if($include=="blog") {
           include("include/blog.php");
         }else if($include=="detail-blog") {

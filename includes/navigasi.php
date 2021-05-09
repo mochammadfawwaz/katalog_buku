@@ -7,27 +7,23 @@
 
         <div class="collapse navbar-collapse" id="navbarsExample07">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?include=about-us">About Us</a>
                 </li>
-                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown07">
-                    <?php
-                    $sql = "SELECT `id_kategori_buku`,`kategori_buku` FROM `kategori_buku` ORDER BY `kategori_buku`
-                    ";
-                    $query_k = mysqli_query($koneksi, $sql);
-                    while($data_k = mysqli_fetch_row($query_k)){
-                        $id_kat = $data_k[0];
-                        $kat = $data_k[1];
-                    ?>
-                    <a class="dropdown-item" href="index.php?include=detail-kategori-buku&data=<?php echo $id_kat; ?>"><?php echo $kat; ?></a>
-                    
-                    <?php } ?>
+                        <?php $sql_k = "SELECT `id_kategori_buku`,`kategori_buku` FROM `kategori_buku` ORDER BY `kategori_buku`";
+                        $query_k = mysqli_query($koneksi, $sql_k);
+                        while ($data_k = mysqli_fetch_row($query_k)) {
+                            $id_kat = $data_k[0];
+                            $kat = $data_k[1]; ?>
+                            <a class="dropdown-item" href="index.php?include=detail-kategori-buku&data=<?= $id_kat; ?>"> <?php echo $kat; ?></a>
+
+                        <?php } ?>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -38,8 +34,8 @@
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </div>

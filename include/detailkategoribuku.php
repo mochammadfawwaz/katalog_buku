@@ -1,4 +1,3 @@
-  
 <section id="blog-header">
     <div class="container">
         <h1 class="text-white">DAFTAR KATEGORI BUKU</h1>
@@ -8,8 +7,8 @@
 <?php
 if (isset($_GET['data'])) {
     $id_kategori_buku = $_GET['data'];
-    $sql_kategori_buku = "SELECT `kategori_buku` FROM `kategori_buku` WHERE `id_kategori_buku`='$id_kategori_buku'";
-    $query_kategori_buku = mysqli_query($koneksi, $sql_kategori_buku);
+    $sql_kb = "SELECT `kategori_buku` FROM `kategori_buku` WHERE `id_kategori_buku`='$id_kategori_buku'";
+    $query_kategori_buku = mysqli_query($koneksi, $sql_kb);
     while ($data_kategori_buku = mysqli_fetch_row($query_kategori_buku)) {
         $kategori_buku = $data_kategori_buku[0];
     } ?>
@@ -20,8 +19,8 @@ if (isset($_GET['data'])) {
                 <div class='col-md-9 katalog-main'>
                     <div class='row'>
                     <?php
-                    $sql_cek_data = "SELECT `b`.`cover`,`k`.`kategori_buku`,`b`.`judul`,`b`.`pengarang`, `b`.`tahun_terbit`,`p`.`penerbit`, `b`.`sinopsis`,`b`.`id_kategori_buku`, `b`.`id_buku` FROM `buku` `b` INNER JOIN `kategori_buku` `k` ON `b`.`id_kategori_buku`=`k`.`id_kategori_buku` INNER JOIN `penerbit` `p` ON `b`.`id_penerbit`= `p`.`id_penerbit` WHERE `b`.`id_kategori_buku`='$id_kategori_buku'";
-                    $query_jum = mysqli_query($koneksi, $sql_cek_data);
+                    $sql_bp = "SELECT `b`.`cover`,`k`.`kategori_buku`,`b`.`judul`,`b`.`pengarang`, `b`.`tahun_terbit`,`p`.`penerbit`, `b`.`sinopsis`,`b`.`id_kategori_buku`, `b`.`id_buku` FROM `buku` `b` INNER JOIN `kategori_buku` `k` ON `b`.`id_kategori_buku`=`k`.`id_kategori_buku` INNER JOIN `penerbit` `p` ON `b`.`id_penerbit`= `p`.`id_penerbit` WHERE `b`.`id_kategori_buku`='$id_kategori_buku'";
+                    $query_jum = mysqli_query($koneksi, $sql_bp);
                     $jum_data = mysqli_num_rows($query_jum);
                     $hasil = ceil($jum_data);
                     while ($data_d = mysqli_fetch_row($query_jum)) {
@@ -34,6 +33,7 @@ if (isset($_GET['data'])) {
                         $sinopsis = $data_d[6];
                         $id_kategori_buku = $data_d[7];
                         $id_buku = $data_d[8];
+                        $nodata = "Data tidak ditemukan";
                         if ($hasil < 1) {
                             echo "<div class='col-md-4'>
                                 <h4 class='font-italic'> $nodata </h4>
@@ -55,7 +55,8 @@ if (isset($_GET['data'])) {
                                     </div>
                                 </div>
                             </div>
-                        </div>";}
+                        </div>";
+                        }}}
                     ?>
                     </div><!-- .row-->
                 </div><!-- /.katalog-main -->
@@ -63,7 +64,7 @@ if (isset($_GET['data'])) {
                 <aside class="col-md-3 katalog-sidebar">
                     <!-- categories -->
                     <div class="pb-4">
-                        <h5 class="kategori">Kategori</h5>
+                        <h5 class="">Kategori</h5>
                         <ol class="list-group list-group-flush mb-0">
                             <?php $sql_k = "SELECT `id_kategori_buku`,`kategori_buku` FROM `kategori_buku` ORDER BY `kategori_buku`";
                             $query_k = mysqli_query($koneksi, $sql_k);
@@ -76,7 +77,7 @@ if (isset($_GET['data'])) {
                     </div>
 
                     <!-- list tag buku -->
-                    <h5 class="tag">Tag</h5>
+                    <h5 class="">Tag</h5>
                     <ol class="list-group list-group-flush mb-5">
                         <?php $sql_t = "SELECT `id_tag`,`tag` FROM `tag` ORDER BY `tag`";
                         $query_t = mysqli_query($koneksi, $sql_t);
@@ -84,7 +85,7 @@ if (isset($_GET['data'])) {
                             $id_tag = $data_t[0];
                             $nama_tag = $data_t[1]; ?>
                             <li class="list-group-item"><a href="index.php?include=detail-tag&data=<?php echo $id_tag; ?>"> <?php echo $nama_tag; ?></a></li>
-                        <?php }}} ?>
+                        <?php } ?>
                     </ol>
             </div>
             </aside> <!-- /.katalog-sidebar -->

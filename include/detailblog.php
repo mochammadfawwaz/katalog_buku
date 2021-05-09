@@ -43,37 +43,32 @@
           </div><!-- /.blog-main -->
       
           <aside class="col-md-3 blog-sidebar">
-      
-            <div class="p-4">
-              <h4 class="font-italic">Categories</h4>
-              <ol class="list-unstyled mb-0">
-                <li><a href="#">Umum</a></li>
-                <li><a href="#">PHP</a></li>
-                <li><a href="#">Java</a></li>
-                <li><a href="#">Database</a></li>
-                <li><a href="#">Techno</a></li>
-            </div>
-      
-            <div class="p-4">
-              <h4 class="font-italic">Archives</h4>
-              <ol class="list-unstyled mb-0">
-                <li><a href="#">March 2014</a></li>
-                <li><a href="#">February 2014</a></li>
-                <li><a href="#">January 2014</a></li>
-                <li><a href="#">December 2013</a></li>
-                <li><a href="#">November 2013</a></li>
-                <li><a href="#">October 2013</a></li>
-                <li><a href="#">September 2013</a></li>
-                <li><a href="#">August 2013</a></li>
-                <li><a href="#">July 2013</a></li>
-                <li><a href="#">June 2013</a></li>
-                <li><a href="#">May 2013</a></li>
-                <li><a href="#">April 2013</a></li>
-              </ol>
-            </div>
-      
-            
-          </aside><!-- /.blog-sidebar -->
+        <!-- categories -->
+        <div class="pb-4">
+          <h5>Kategori</h5>
+          <ol class="list-group list-group-flush mb-0">
+            <?php $sql_k = "SELECT `id_kategori_blog`,`kategori_blog` FROM `kategori_blog` ORDER BY `kategori_blog`";
+            $query_k = mysqli_query($koneksi, $sql_k);
+            while ($data_k = mysqli_fetch_row($query_k)) {
+              $id_kat = $data_k[0];
+              $nama_kat = $data_k[1]; ?>
+              <li class="list-group-item"><a href="index.php?include=detail-kategori-blog&data=<?php echo $id_kat; ?>"><?php echo $nama_kat; ?></a></li>
+            <?php } ?>
+          </ol>
+        </div>
+
+        <!-- list archive blog -->
+        <h5>Archives</h5>
+        <ol class="list-group list-group-flush mb-5">
+          <?php $sql_t = "SELECT `id_blog`,`tanggal` FROM `blog` GROUP BY `tanggal`";
+          $query_t = mysqli_query($koneksi, $sql_t);
+          while ($data_t = mysqli_fetch_row($query_t)) {
+            $id_blog = $data_t[0];
+            $Tanggal = $data_t[1]; ?>
+            <li class="list-group-item"><a href="index.php?include=detail-archive&data=<?php echo $Tanggal; ?>"> <?php echo $Tanggal; ?></a></li>
+          <?php } ?>
+        </ol>
+      </aside>
       
         </div><!-- /.row -->
       

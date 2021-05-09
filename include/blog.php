@@ -9,8 +9,6 @@
       <div class="col-md-9 blog-main">
         <div class="blog-post">
           <?php
-
-
           $batas = 1;
           if (!isset($_GET['halaman'])) {
             $posisi = 0;
@@ -19,7 +17,7 @@
             $halaman = $_GET['halaman'];
             $posisi = ($halaman - 1) * $batas;
           }
-          $sql_b = "SELECT `b`.`id_blog`, `k`.`kategori_blog`, `b`.`tanggal`, `b`.`judul`, `b`.`isi`, `u`.`nama` FROM `blog` `b` INNER JOIN `user` `u` ON `b`.`id_user` = `u`.`id_user` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog`";
+          $sql_b = "SELECT `b`.`id_blog`, `k`.`kategori_blog`, `b`.`tanggal`, `b`.`judul`, `b`.`sinopsis`, `b`.`isi`, `u`.`nama` FROM `blog` `b` INNER JOIN `user` `u` ON `b`.`id_user` = `u`.`id_user` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog`";
             $sql_b .= " ORDER BY `b`.`judul`, `k`.`kategori_blog` limit $posisi, $batas";
             $query_b = mysqli_query($koneksi, $sql_b);
             $posisi = 1;
@@ -28,14 +26,15 @@
               $kategori_blog = $data_b['1'];
               $tanggal = $data_b['2'];
               $judul = $data_b['3'];
-              $isi = $data_b['4'];
-              $nama = $data_b['5'];
+              $sinopsis = $data_b['4'];
+              $isi = $data_b['5'];
+              $nama = $data_b['6'];
             ?>
             <h2 class="blog-post-title"><a href="#"><?= $judul; ?></a></h2>
             <p class="blog-post-meta"><?= $tanggal; ?> by <?= $nama; ?></p>
             <!--<img src="slideshow/slide-1.jpg" class="img-fluid" alt="Responsive image"><br><br>-->
 
-            <p class="text-justify"><?= $isi; ?> <br> <b>...</b></p>
+            <p class="text-justify"><?= $sinopsis; ?> <br> <b>...</b></p>
             <a href="index.php?include=detail-blog&data=<?php echo $id_blog; ?>" class="btn btn-primary">Continue reading..</a> <br><br>
           <?php $posisi++;
           } ?>
@@ -83,7 +82,7 @@
             while ($data_k = mysqli_fetch_row($query_k)) {
               $id_kat = $data_k[0];
               $nama_kat = $data_k[1]; ?>
-              <li class="list-group-item"><a href="index.php?include=detail-kategori-buku&data=<?php echo $id_kat; ?>"><?php echo $nama_kat; ?></a></li>
+              <li class="list-group-item"><a href="index.php?include=detail-kategori-blog&data=<?php echo $id_kat; ?>"><?php echo $nama_kat; ?></a></li>
             <?php } ?>
           </ol>
         </div>
@@ -96,7 +95,7 @@
           while ($data_t = mysqli_fetch_row($query_t)) {
             $id_blog = $data_t[0];
             $Tanggal = $data_t[1]; ?>
-            <li class="list-group-item"><a href="index.php?include=daftar-archive&data=<?php echo $Tanggal; ?>"> <?php echo $Tanggal; ?></a></li>
+            <li class="list-group-item"><a href="index.php?include=detail-archive&data=<?php echo $Tanggal; ?>"> <?php echo $Tanggal; ?></a></li>
           <?php } ?>
         </ol>
       </aside>

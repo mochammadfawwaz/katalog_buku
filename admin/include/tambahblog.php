@@ -62,6 +62,12 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="nim" class="col-sm-3 col-form-label">Sinopsis</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="sinopsis" id="sinopsis" value="">
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="nim" class="col-sm-3 col-form-label">Tanggal</label>
             <div class="col-sm-7">
               <input type="date" class="form-control" name="tanggal" id="tanggal" value="">

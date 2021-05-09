@@ -66,8 +66,9 @@
                     <thead>                  
                       <tr>
                         <th width="5%">No</th>
-                        <th width="15%">Kategori</th>
+                        <th width="10%">Kategori</th>
                         <th width="15%">Judul</th>
+                        <th width="15%">Sinopsis</th>
                         <th width="15%">Tangal</th>
                         <th width="20%">Isi</th>
                         <th width="10%"><center>Aksi</center></th>
@@ -81,7 +82,7 @@
                       $_SESSION['katakunci_blog'] = $katakunci_blog;
                      }
 
-                    $sql_b = "SELECT `b`.`id_blog` ,`k`.`kategori_blog`,`b`.`judul`, `b`.`tanggal`, `b`.`isi`
+                    $sql_b = "SELECT `b`.`id_blog` ,`k`.`kategori_blog`,`b`.`judul`, `b`.`sinopsis`, `b`.`tanggal`, `b`.`isi`
                     FROM `blog` `b` 
                     INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`. `id_kategori_blog`";
                     
@@ -101,14 +102,16 @@
                       $id_blog = $data_b[0];
                       $kategori_blog = $data_b[1];
                       $judul = $data_b[2];
-                      $tanggal = $data_b[3];
-                      $isi = $data_b[4];
+                      $sinopsis = $data_b[3];
+                      $tanggal = $data_b[4];
+                      $isi = $data_b[5];
                     ?>
                     <tbody>
                     <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $kategori_blog; ?></td>
                         <td><?php echo $judul; ?></td>
+                        <td><?php echo $sinopsis; ?></td>
                         <td><?php echo $tanggal; ?></td>
                         <td><?php echo $isi; ?></td>
                         <td align="center">
